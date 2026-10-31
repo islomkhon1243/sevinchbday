@@ -26,6 +26,8 @@
   </main>
   <script>
     const intro=document.getElementById('intro'),envelope=document.getElementById('envelope'),music=document.getElementById('music'),toggle=document.getElementById('musicToggle');
+    const sparkleField=document.getElementById('sparkles');
+    for(let i=0;i<34;i++){const spark=document.createElement('i');spark.className='spark';spark.style.setProperty('--x',`${Math.random()*100}%`);spark.style.setProperty('--size',`${2+Math.random()*3}px`);spark.style.setProperty('--duration',`${9+Math.random()*12}s`);spark.style.setProperty('--delay',`${-Math.random()*20}s`);spark.style.setProperty('--drift',`${-32+Math.random()*64}px`);spark.style.setProperty('--alpha',`${.25+Math.random()*.5}`);sparkleField.appendChild(spark)}
     envelope.addEventListener('click',()=>{envelope.classList.add('open');music.play().then(()=>toggle.classList.add('playing')).catch(()=>{});setTimeout(()=>intro.classList.add('hidden'),1050)});
     toggle.addEventListener('click',()=>{if(music.paused){music.play().then(()=>toggle.classList.add('playing')).catch(()=>{})}else{music.pause();toggle.classList.remove('playing')}});
     // Добавьте свой аудиофайл в эту папку и назовите его music.mp3.
